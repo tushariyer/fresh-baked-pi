@@ -1,0 +1,21 @@
+name: Main to Develop Cascade
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  main-to-develop-cascade:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Raise Pull Request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "develop"
+        pr_title: "Cascade Main to Develop"
+        pr_body: "👑 *Automated Pull Request to Develop*"
+        pr_draft: false
+        pr_label: "AutoCICD"
+        github_token: "${{ secrets.HUB_TOKEN }}"
